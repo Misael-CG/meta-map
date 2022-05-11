@@ -1,24 +1,261 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from "react";
+import { Container, Row } from "reactstrap";
+import TableUser from "./componets/TableUser";
 function App() {
+  const data = [
+    {
+      __v: 0,
+      _id: "627892f1adb7403045ab14c8",
+      email: "mayra.test@metamap.com",
+      hub: "MX",
+      name: "MAYRA G LOPEZ",
+      password: "$2a$10$fdIWhcLJVPjZLZMbNT8ws.SNP.ZLTWTHzvMJbN2oa6YczLhugdRGi",
+      role: "ADMIN",
+    },
+    {
+      __v: 0,
+      _id: "62789472adb7403045ab14ca",
+      email: "jesus.test@metamap.com",
+      hub: "MX",
+      name: "JESUS H VEGA",
+      password: "$2a$10$YD0RGYunWdamF2t0yq8d3.wvrdyEirTg9CD6IMJxst4Hwa29trNiS",
+      role: "AGENT",
+    },
+    {
+      __v: 0,
+      _id: "62789497adb7403045ab14cc",
+      email: "oscar.test@metamap.com",
+      hub: "MX",
+      name: "OSCAR R",
+      password: "$2a$10$bU8L.HFhoOEQ4aSARxLzNO1sn1REdzRjwAJ6gT1/h1pHO6gOvascS",
+      role: "ADMIN",
+    },
+    {
+      __v: 0,
+      _id: "627895ddadb7403045ab14ce",
+      email: "name.test@metamap.com",
+      hub: "MX",
+      name: "NAME USER",
+      password: "$2a$10$5dORLJXojAPght/sE/5sPuAmy54qgNaZRxwxGxWdIh7AYQf3TaeDO",
+      role: "ADMIN",
+    },
+    {
+      __v: 0,
+      _id: "62789614adb7403045ab14d0",
+      email: "Ana.test@metamap.com",
+      hub: "CO",
+      name: "Ana H",
+      password: "$2a$10$2ESVW14xn.CH9JfzvHtrLulb3iJEANYxjsEs75O4G49s77LyU7aF.",
+      role: "ADMIN",
+    },
+    {
+      __v: 0,
+      _id: "627b624dc7d204dd9537b8f4",
+      email: "name.test@metamap.com",
+      hub: "MX",
+      name: "NAME USER",
+      password: "$2a$10$ZXcTujnu7m1ZesmZwkKu9OpmPQvt8rN5F1sAvpLQtvsGuUaRdAVQS",
+      role: "ADMIN",
+    },
+    {
+      __v: 0,
+      _id: "627b626ac7d204dd9537b8f6",
+      email: "namedddd.tddddest@metamap.com",
+      hub: "MX",
+      name: "NdddddAME USER",
+      password: "$2a$10$F218tGCgIbYIkAR5f7CA8O3XCuv4pbDc1B9yvb1uWusvRZUGX0nxO",
+      role: "ADMIN",
+    },
+    {
+      __v: 0,
+      _id: "627b857ec7d204dd9537bb89",
+      email: "namd.test@met.com",
+      hub: "MX",
+      name: "NE USER",
+      password: "$2a$10$lX1uQVh4o5loy9fTeickJ.NdPqQF8c7ifzLdyGNCx93qSYLfZgnz6",
+      role: "ADMIN",
+    },
+    {
+      __v: 0,
+      _id: "627b880bc7d204dd9537bbaf",
+      email: "prueba@prueba.com",
+      hub: "MX",
+      name: "karim",
+      password: "$2a$10$0tlPbQ7cNXpqqxEcdsDrAuqSb7cqtDdxwZu.CPKzi9wqDXFwU6Wi2",
+      role: "ADMIN",
+    },
+    {
+      __v: 0,
+      _id: "627b8892c7d204dd9537bbba",
+      email: "prueba@prueba.com",
+      hub: "MX",
+      name: "karim",
+      password: "$2a$10$VkcMsD4GdrcjQnFygkO41uK2uiZmT3UXAaRAgLUPV7AGxjdOC6kuO",
+      role: "ADMIN",
+    },
+    {
+      __v: 0,
+      _id: "627b8bbdc7d204dd9537bbd2",
+      email: "asdasd@asd",
+      hub: "asdasd",
+      name: "asd",
+      password: "$2a$10$EMh8c3NNqyPDPZDMFAfuLOyjJJx5/qZuoa/j9jiwCmr8m3wyO62oG",
+      role: "asdasd",
+    },
+    {
+      __v: 0,
+      _id: "627b8c7ec7d204dd9537bbe0",
+      email: "sdsdddd@sd",
+      hub: "asd",
+      name: "sdsd",
+      password: "$2a$10$6TOwJV5JzPPGtjrBjOpGtuOMaSi9xLCGKi.QyaRCZ/i7N5r9qyuge",
+      role: "asd",
+    },
+    {
+      __v: 0,
+      _id: "627b8cd5c7d204dd9537bbe7",
+      email: "ddddd@ddd",
+      hub: "ddd",
+      name: "ddddd",
+      password: "$2a$10$MdxNMtdfS0/cRALLon/PMeYqFIk8/E2x3iK2Tja3hQELoA.tPhCfS",
+      role: "ddd",
+    },
+    {
+      __v: 0,
+      _id: "627b8d0bc7d204dd9537bbed",
+      email: "ddddd@ddds",
+      hub: "ddd",
+      name: "dddddss",
+      password: "$2a$10$BZRi20bhuYgbyTjpQO5gfOyqlSwKBx.o5X5J1ak/higbUMePvO3Fq",
+      role: "ddd",
+    },
+    {
+      __v: 0,
+      _id: "627b8d8fc7d204dd9537bbfa",
+      email: "xxxx@xxxx",
+      hub: "xxxx",
+      name: "sdsdsd",
+      password: "$2a$10$.SB5NAAqmrAZAOq1FrPWkOkzGj9PqUTIrtj/9keqsSrnBaNMVr37S",
+      role: "xxxx",
+    },
+    {
+      __v: 0,
+      _id: "627b8ee5c7d204dd9537bc0e",
+      email: "gggg@gg",
+      hub: "ggg",
+      name: "gggg",
+      password: "$2a$10$qBl9hqJK1wqQqMLO1yRPZuGipg5/2estYoPg0PFEpl3dZw.VUvYTW",
+      role: "ggg",
+    },
+    {
+      __v: 0,
+      _id: "627b9101c7d204dd9537bc1e",
+      email: "nnnn@nn",
+      hub: "nnn",
+      name: "nnn",
+      password: "$2a$10$hFjDrqzzaov/nuRTmrFkRuiWJyQHcBDxgLDTHSOb7YYbws6UezKSS",
+      role: "nnn",
+    },
+    {
+      __v: 0,
+      _id: "627b9346c7d204dd9537bc33",
+      email: "uuu@uuu",
+      hub: "uuuu",
+      name: "uuu",
+      password: "$2a$10$3ambsIQtwxaWkliqnvLG2.47tROExxPSBd72zVgNNwa/yhn/lo5Mu",
+      role: "uuuu",
+    },
+    {
+      __v: 0,
+      _id: "627b9382c7d204dd9537bc35",
+      email: "ccc@cc",
+      hub: "ccc",
+      name: "ccc",
+      password: "$2a$10$gJInG9t2sezZlNj1cF9uoOstm1Pffcjtq4HsONmlahPT7A4eMyonS",
+      role: "ccc",
+    },
+    {
+      __v: 0,
+      _id: "627b93edc7d204dd9537bc37",
+      email: "mmm@mm",
+      hub: "mmm",
+      name: "mmmm",
+      password: "$2a$10$NvnvCxshTuBGqcY2kwu7YOr8GN7l7um7RB3iKzHYbrxJth7O5fqUO",
+      role: "mmm",
+    },
+    {
+      __v: 0,
+      _id: "627b9400c7d204dd9537bc39",
+      email: "mmm@mmdd",
+      hub: "mmmd",
+      name: "mmmm",
+      password: "$2a$10$Buk1i3eBSi7.2a3fB.s/LurWRltakv8siHFoEBnJyccUZ9TgdZtdW",
+      role: "mmm",
+    },
+    {
+      __v: 0,
+      _id: "627b9428c7d204dd9537bc3b",
+      email: "vc@vc",
+      hub: "vc",
+      name: "vc",
+      password: "$2a$10$UODVapW.rrG1ij/zihyC.uNTnQv51KsY3cZNuRJr.s3JVyd6L0Azq",
+      role: "vc",
+    },
+    // {
+    //   __v: 0,
+    //   _id: "627b9443c7d204dd9537bc3f",
+    //   email: "",
+    //   hub: "",
+    //   name: "",
+    //   password: "$2a$10$BK6Fr1zYlMIEEHjLoPFe7uYB6LiOodrF3SDnDbbA2Oy5esYnhH4ge",
+    //   role: "",
+    // },
+    {
+      __v: 0,
+      _id: "627ba7afc7d204dd9537bcec",
+      email: "jjj@uuu",
+      hub: "uuu",
+      name: "bbbj",
+      password: "$2a$10$MdDy4rxCwoDGtq9ABnKdk.N5AZy9M2kmMyv4Vr6wwA11ulhBUOF6O",
+      role: "uuu",
+    },
+    {
+      __v: 0,
+      _id: "627ba7bac7d204dd9537bcee",
+      email: "oooo@hh",
+      hub: "fgfgfg",
+      name: "oooo",
+      password: "$2a$10$pa89rMeC8FORKDz3U6Zf2empzbDXBjrU.wHv2wBFJpR5Dsw3jFnOq",
+      role: "gfgfg",
+    },
+    {
+      __v: 0,
+      _id: "627baa7ac7d204dd9537bd01",
+      email: "vbvbvbvbvb@vvbb",
+      hub: "fggg",
+      name: "bvbvbvb",
+      password: "$2a$10$0NsEVdVsv0zaZvgh/5nBNesooV7WYUeYP6MGHs4AAG7d4ttSAquZe",
+      role: "ffggg",
+    },
+    {
+      __v: 0,
+      _id: "627bbff8c7d204dd9537bd90",
+      email: "hhh@jjj",
+      hub: "jjj",
+      name: "hhh",
+      password: "$2a$10$Jj.gsRO/noEQrvEuaJJNauc87VoY6Xi.BL.I2NprM4Z.l26vx.w9q",
+      role: "jjj",
+    },
+  ];
+  const [users, setUsers] = useState(data);
+  const [user, setUser] = useState({});
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container fluid>
+      <Row>
+        <TableUser {...{ users, setUsers, user, setUser }} />
+      </Row>
+    </Container>
   );
 }
 
